@@ -1,4 +1,31 @@
-grids/greater_less.py
-gui/greater_less_gui.py
-solvers/greater_less_csp.py
-.venv
+# ----------------------
+# Virtual environments
+# ----------------------
+.venv/
+venv/
+env/
+
+# ----------------------
+# Python cache
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ----------------------
+# PyCharm / IntelliJ
+# ----------------------
+.idea/
+*.iml
+
+# ----------------------
+# OS files
+# ----------------------
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Logs / temp
+# ----------------------
+*.log
