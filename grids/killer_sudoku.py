@@ -143,11 +143,11 @@ KILLER_3 = {
 }
 
 
-def get_killer_board(index: int):
-    if index == 1:
+def get_killer_board(index: str):
+    if index == 'easy':
         return KILLER_1
-    if index == 2:
+    if index == 'medium':
         return KILLER_2
-    if index == 3:
+    if index == 'hard':
         return KILLER_3
     raise ValueError("Killer board index must be 1, 2, ora 3")
