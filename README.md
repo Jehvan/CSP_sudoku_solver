@@ -1,6 +1,6 @@
 # Sudoku Solver using CSP
 
-This project implements Classic, Killer and Greater Less Sudoku solvers using
+This project implements Classic, Killer, Odd Even and Diagonal Sudoku solvers using
 Constraint Satisfaction Problems (CSP) with the python-constraint library.
 
 ## Requirements
