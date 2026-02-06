@@ -12,7 +12,7 @@ for length in range(1, 10):
         PRECOMPUTED_COMBS.setdefault((length, s), []).append(tuple(sorted(comb)))
 
 
-def solve_killer_csp(grid, cages):
+def solve_killer_csp(grid, cages, initial_grid=None):
     """
     Killer Sudoku solver using python-constraint.
     grid: 9x9 list of lists, will be filled in-place
@@ -45,8 +45,12 @@ def solve_killer_csp(grid, cages):
     # Step 2: Add variables to CSP with filtered domains
     for r in range(9):
         for c in range(9):
-            domain = list(cell_domains.get((r, c), range(1, 10)))
-            problem.addVariable((r, c), domain)
+            # If predefined, domain is fixed
+            if initial_grid and initial_grid[r][c] != 0:
+                problem.addVariable((r, c), [initial_grid[r][c]])
+            else:
+                domain = list(cell_domains.get((r, c), range(1, 10)))
+                problem.addVariable((r, c), domain)
 
     # Step 3: Standard Sudoku constraints
     # Rows

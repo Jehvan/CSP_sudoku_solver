@@ -56,14 +56,22 @@ def main():
         difficulty = input("Choose killer board (easy, medium, hard): ")
         board = get_killer_board(difficulty)
 
-        grid = empty_grid()
+        initial_grid = board["grid"]
+        grid = [row[:] for row in initial_grid]
         cages = board["cages"]
 
+        fixed = {
+            (r,c)
+            for r in range(9)
+            for c in range(9)
+            if initial_grid[r][c] != 0
+        }
+
         validate_cages(cages)
-        success = solve_killer_csp(grid, cages)
+        success = solve_killer_csp(grid, cages, initial_grid)
 
         if success:
-            display_killer_sudoku(grid, fixed=set(), cages=cages)
+            display_killer_sudoku(grid, fixed=fixed, cages=cages)
         else:
             print("No solution found.")
 
