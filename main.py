@@ -105,7 +105,7 @@ def main():
         }
 
         if success:
-            print("\nBlue numbers must be odd\nMagenta numbers must be even")
+            print("\nBlue numbers must be odd\nMagenta numbers must be even\nWhite numbers are prefilled")
             print("Odd/Even Sudoku solved:")
             pretty_print(grid, fixed=fixed, parity=parity)
         else:
