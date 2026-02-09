@@ -1,17 +1,18 @@
-import grids.greater_less
 import grids.odd_even
+from grids.diagonal_sudoku import DIAGONAL_1
+from grids.killer_sudoku import get_killer_board
 
 from api.api import get_classic_sudoku
+
 from solvers.classic_csp import solve_sudoku
-
-from grids.killer_sudoku import get_killer_board, empty_grid
-from utils.printer import pretty_print
-from gui.killer_gui import display_killer_sudoku
 from solvers.killer_sudoku_csp import solve_killer_csp
-
 from solvers.odd_even_csp import solve_odd_even_sudoku
-from grids.diagonal_sudoku import DIAGONAL_1
 from solvers.diagonal_sudoku_csp import solve_diagonal_sudoku
+
+from utils.printer import pretty_print
+
+from gui.killer_gui import display_killer_sudoku
+
 
 def validate_cages(cages):
     """Checks if cages are mathematically possible"""
@@ -83,8 +84,9 @@ def main():
         success = solve_diagonal_sudoku(grid)
 
         if success:
-            print("\nDiagonal Sudoku solved:\n")
-            pretty_print(grid, fixed={(r, c) for r in range(9) for c in range(9) if DIAGONAL_1['grid'][r][c] != 0})
+            print("\nDiagonal Sudoku solved:")
+            print("Diagonals are colored in for accessibility")
+            pretty_print(grid, fixed={(r, c) for r in range(9) for c in range(9) if DIAGONAL_1['grid'][r][c] != 0}, diagonal=True)
         else:
             print("No solution found.")
 
